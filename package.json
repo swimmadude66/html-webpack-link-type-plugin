@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-link-type-plugin",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "a plugin for html-webpack-plugin to allow for mimetype tagging of injected links",
   "main": "dist/plugin.js",
   "scripts": {
