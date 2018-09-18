@@ -1,4 +1,8 @@
 language: node_js
+node_js:
+  - "8"
+  - "9"
+  - "10"
 
 install: "npm install"
 
@@ -8,6 +12,7 @@ script:
 
 deploy:
   skip_cleanup: true
+  node_js: "8"
   on: 
     tags: true
     branch: master
