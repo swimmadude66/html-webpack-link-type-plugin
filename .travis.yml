@@ -1,0 +1,16 @@
+language: node_js
+
+install: "npm install"
+
+script: 
+  - npm test
+  - npm run build
+
+deploy:
+  skip_cleanup: true
+  on: 
+    tags: true
+    branch: master
+  provider: npm
+  email: "opensource@steadyapp.com"
+  api_key: "secure: HMuh0yxeUoz3xbwBdB0+PbMfYhVt3jY8TuaNQAdp59KVR+TaT9X2gGz/CgI6e2t84t7VN9vPKCnXbGnk0XZE1MmNAAnWnTnxbQS+jmtgKEs5EAZyte3rMO2REqUm2BdkEcjTd2pyFfweMvHYyEoq3qlcWa6aQv+jRgsQ5xMAQGUL0DGvoas/Esl3mjDt9sEqfHya9hbDr+gE/olLgv4MKH5aJOBZv28Pdk6j/vyOw/Y135BqxKMx4w7VdQ1cstj07BUTIdcw4/Yv1Wpsb9+cRdZ7M0aeg+ylgxsYDcG87zDMLt/CQHd2LENj7cMVq7WhKCRIU/vQxWJV9gquHJg5bnjyA1BgOtuer1kZPn2Sqw1LHhZr9o69dDZpKjfIrVt+zGYu1f1ucn0DHF0phe0Mnm5H9jNHcK0hgRy5jHE/ujrnQXTKqLBUKsxGhxkEHJNiFvBnj6n+T447tpjVMtUd6lEey2IgcMnCjqHZSNQLN3u4/zfABWBVuHdCs1RM3/cXirMx5Nmq4o9EfAHel6qYrSgQZgDHJxZwhihbm/wvauafMoW1F7MWHypJQtTkXVWXdkDPcxrz8Bb6eQ+Q0qplhiHFZQTITHfhTd8uwWv2F/h7CrpXx4a7/8kLcJeeMDRlREltaN7Xia7h3RpP0GYsHx5rXmmdWBNzdUYqNYFzlJs="

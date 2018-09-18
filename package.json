@@ -1,0 +1,52 @@
+{
+  "name": "html-webpack-link-type-plugin",
+  "version": "0.0.2",
+  "description": "a plugin for html-webpack-plugin to allow for mimetype tagging of injected links",
+  "main": "dist/plugin.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register spec/**/*.spec.ts --exit",
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "html-webpack-plugin",
+    "mimetype",
+    "webpack",
+    "plugin"
+  ],
+  "author": "swimmadude66",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "4.1.4",
+    "@types/html-webpack-plugin": "3.2.0",
+    "@types/mocha": "5.2.5",
+    "@types/node": "^8.10.29",
+    "@types/rimraf": "2.0.2",
+    "@types/webpack": "4.4.11",
+    "chai": "4.1.2",
+    "css-loader": "^1.0.0",
+    "html-webpack-plugin": "3.2.0",
+    "mini-css-extract-plugin": "0.4.2",
+    "mocha": "5.2.0",
+    "rimraf": "2.6.2",
+    "ts-node": "7.0.1",
+    "typescript": "3.0.3",
+    "webpack": "4.19.1"
+  },
+  "dependencies": {
+    "minimatch": "3.0.4"
+  },
+  "peerDependencies": {
+    "html-webpack-plugin": ">=3.0.0",
+    "webpack": ">=4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steadyapp/html-webpack-link-type-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/steadyapp/html-webpack-link-type-plugin/issues"
+  },
+  "homepage": "https://github.com/steadyapp/html-webpack-link-type-plugin#readme"
+}
