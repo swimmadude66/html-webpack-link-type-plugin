@@ -12,8 +12,8 @@ script:
 
 deploy:
   skip_cleanup: true
-  node_js: "8"
   on: 
+    node: "8"
     tags: true
     branch: master
   provider: npm
