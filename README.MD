@@ -6,6 +6,8 @@ _Assigns a mimetype to link tags injected by [Html Webpack Plugin](https://githu
 1. Install via `npm i -D html-webpack-link-type-plugin`
 1. Add to your webpack config AFTER HtmlWebpackPlugin
 ```javascript
+    var LinkTypePlugin = require('html-webpack-link-type-plugin').HtmlWebpackLinkTypePlugin;
+    ...
     plugins: [
         new HtmlWebpackPlugin({
             filename: join(OUTPUT_DIR, './dist/index.html'),
