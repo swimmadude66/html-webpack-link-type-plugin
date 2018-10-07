@@ -1,4 +1,5 @@
 import * as minimatch from 'minimatch';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export class HtmlWebpackLinkTypePlugin {
 
@@ -23,25 +24,46 @@ export class HtmlWebpackLinkTypePlugin {
         if (compiler.hooks) {
             // webpack 4 support
             compiler.hooks.compilation.tap('LinkTypePlugin', (compilation) => {
-                compilation.hooks.htmlWebpackPluginAlterAssetTags.tapAsync(
-                    'LinkTypePlugin',
-                    (data, cb) => {
-                        this._assignTypes(data, cb);
-                    }
-                )
+                if (compilation.hooks.htmlWebpackPluginAlterAssetTags) {
+                    // html webpack 3
+                    compilation.hooks.htmlWebpackPluginAlterAssetTags.tapAsync(
+                        'LinkTypePlugin',
+                        (data, cb) => {
+                            data.head = this._transformAssets(data.head);
+                            data.body = this._transformAssets(data.body);
+                            return cb(null, data);
+                        }
+                    )
+                } else if (HtmlWebpackPlugin && HtmlWebpackPlugin['getHooks']) {
+                    // html-webpack 4
+                    const hooks = (HtmlWebpackPlugin as any).getHooks(compilation);
+                    hooks.alterAssetTags.tapAsync(
+                        'LinkTypePlugin',
+                        (data, cb) => {
+                            data.assetTags.scripts = this._transformAssets(data.assetTags.scripts);
+                            data.assetTags.styles = this._transformAssets(data.assetTags.styles);
+                            data.assetTags.meta = this._transformAssets(data.assetTags.meta);
+                            return cb(null, data);
+                        }
+                    )
+                } else {
+                    throw new Error('Cannot find appropriate compilation hook');
+                }
             });
         } else {
             // Hook into the html-webpack-plugin processing
             compiler.plugin('compilation', function (compilation) {
                 compilation.plugin('html-webpack-plugin-alter-asset-tags', (htmlPluginData, callback) => {
-                    this._assignTypes(htmlPluginData, callback);
+                    htmlPluginData.head = this._transformAssets(htmlPluginData.head);
+                    htmlPluginData.body = this._transformAssets(htmlPluginData.body);
+                    return callback(null, htmlPluginData);
                 });
             });
         }
     }
 
-    private _assignTypes(data, cb) {
-        const links = [...data.head, ...data.body]
+    private _transformAssets(assets: any[]): any[]  {
+        const links = assets
         .filter(e => e.tagName && e.tagName === 'link')
         .filter(e => e.attributes && e.attributes.href);
 
@@ -51,7 +73,7 @@ export class HtmlWebpackLinkTypePlugin {
                 l.attributes.type=type;
             }
         });
-        return cb(null, data);
+        return links;
     }
 
     private _findMimeType(filename: string): string {
