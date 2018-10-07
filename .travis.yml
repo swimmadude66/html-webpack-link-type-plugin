@@ -5,16 +5,9 @@ node_js:
   - "10"
 
 env:
-  - WEBPACK_VERSION=3
-  - WEBPACK_VERSION=4
-  - HTML_PLUGIN_VERSION=3
-  - HTML_PLUGIN_VERSION=4
-
-matrix:
-  exclude:
-  - env: 
-    - WEBPACK_VERSION=3
-    - HTML_PLUGIN_VERSION=4
+  - WEBPACK_VERSION=3 HTML_PLUGIN_VERSION=3
+  - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=3
+  - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=4
 
 install: 
   - npm install
@@ -31,6 +24,7 @@ deploy:
   skip_cleanup: true
   on: 
     node: "8"
+    env: WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=3
     tags: true
     branch: master
   provider: npm
