@@ -11,10 +11,8 @@ env:
 
 install: 
   - npm install
-  - npm rm webpack
-  - npm rm html-webpack-plugin
-  - npm install webpack@$WEBPACK_VERSION || true
-  - npm install html-webpack-plugin@$HTML_PLUGIN_VERSION || true
+  - npm install -D webpack@$WEBPACK_VERSION || true
+  - npm install -D html-webpack-plugin@$HTML_PLUGIN_VERSION || true
 
 script: 
   - npm test
