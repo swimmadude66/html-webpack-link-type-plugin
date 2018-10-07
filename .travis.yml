@@ -4,7 +4,14 @@ node_js:
   - "9"
   - "10"
 
-install: "npm install"
+env:
+  - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=3
+  - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=next
+
+install: 
+  - npm install
+  - npm install -D webpack@$WEBPACK_VERSION || true
+  - npm install -D html-webpack-plugin@$HTML_PLUGIN_VERSION || true
 
 script: 
   - npm test
@@ -14,6 +21,7 @@ deploy:
   skip_cleanup: true
   on: 
     node: "8"
+    env: WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=3
     tags: true
     branch: master
   provider: npm
