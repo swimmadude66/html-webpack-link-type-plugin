@@ -19,11 +19,12 @@ script:
 
 deploy:
   skip_cleanup: true
-  on: 
+  on:
+    repo: steadyapp/html-webpack-link-type-plugin
     node: "8"
-    env: WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=3
     tags: true
     branch: master
+    condition: env(WEBPACK_VERSION)=4 AND env(HTML_PLUGIN_VERSION)=3
   provider: npm
   email: "opensource@steadyapp.com"
   api_key: 
