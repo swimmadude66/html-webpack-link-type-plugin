@@ -63,17 +63,15 @@ export class HtmlWebpackLinkTypePlugin {
     }
 
     private _transformAssets(assets: any[]): any[]  {
-        const links = assets
-        .filter(e => e.tagName && e.tagName === 'link')
-        .filter(e => e.attributes && e.attributes.href);
-
-        links.forEach(l => {
-            const type = this._findMimeType(l.attributes.href);
-            if (type && type.length) {
-                l.attributes.type=type;
+        return assets.map(l => {
+            if (l.tagName && l.tagName === 'link' && l.attributes && l.attributes.href) {
+                const type = this._findMimeType(l.attributes.href);
+                if (type && type.length) {
+                    l.attributes.type=type;
+                }
             }
+            return l;
         });
-        return links;
     }
 
     private _findMimeType(filename: string): string {

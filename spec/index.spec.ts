@@ -59,6 +59,7 @@ describe('HtmlWebpackLinkTypePlugin', () => {
             const htmlContents = readFileSync(htmlFile).toString();
             expect(!!htmlContents).to.be.true;
             expect(/href="styles\.css"[^>]*?type="text\/css"/.test(htmlContents)).to.be.true;
+            expect(/src="app\.js"/.test(htmlContents)).to.be.true;
             done();
         });
     });
@@ -109,6 +110,7 @@ describe('HtmlWebpackLinkTypePlugin', () => {
             const htmlContents = readFileSync(htmlFile).toString();
             expect(!!htmlContents).to.be.true;
             expect(/href="styles\.css"[^>]*?type="testtype"/.test(htmlContents)).to.be.true;
+            expect(/src="app\.js"/.test(htmlContents)).to.be.true;
             done();
         });
     });
