@@ -11,10 +11,11 @@ _Assigns a mimetype to link tags injected by [Html Webpack Plugin](https://githu
     plugins: [
         new HtmlWebpackPlugin({
             filename: join(OUTPUT_DIR, './dist/index.html'),
-            template: join(__dirname, './src/index.html'),
-            inject: 'body',
             hash: false,
+            inject: 'body',
+            minify: minifyOptions,
             showErrors: false
+            template: join(__dirname, './src/index.html'),
         }),
         new LinkTypePlugin(options)
     ]
@@ -34,6 +35,26 @@ The plugin supports one optional configuration argument, called `typeMap`. It is
         '*.bmp' : 'image/bmp',
     };
 ```
+
+## Notes
+
+By default, `HTMLWebpackPlugin` automatically applies certain optimizations in production mode. Some of these optimizations may remove type attributes in injected links.
+
+To prevent this, you will need to pass your own options to `HTMLWebpackPlugin`'s `minify` property, making sure to omit `removeStyleLinkTypeAttributes` and `removeScriptTypeAttributes`. Starting from `HTMLWebpackPlugin`'s default minify options, that might look like this:
+
+```
+plugins: [
+        new HtmlWebpackPlugin({
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true
+            }
+        }),
+    ]
+```
+
 
 ## Testing
 Testing is done via ts-node and mocha. Test files can be found in `/spec`, and will be auto-discovered as long as the file ends in `.spec.ts`. Just run `npm test` after installing to see the tests run.
