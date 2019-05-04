@@ -3,7 +3,7 @@ import * as webpack from 'webpack';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as rimraf from 'rimraf';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { testAutoAssign, testTypeOverride } from "./tests.spec.ts";
+import { testAutoAssign, testTypeOverride } from "./tests.spec";
 import {HtmlWebpackLinkTypePlugin} from '../src/plugin';
 
 
