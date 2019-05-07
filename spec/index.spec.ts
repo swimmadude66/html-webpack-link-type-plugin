@@ -1,64 +1,82 @@
 import {join} from 'path';
+import {readFileSync} from 'fs';
+import {expect} from 'chai';
 import * as webpack from 'webpack';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as rimraf from 'rimraf';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { testAutoAssign, testTypeOverride } from "./tests.spec";
 import {HtmlWebpackLinkTypePlugin} from '../src/plugin';
 
+const OUTPUT_DIR = join(__dirname, './test_dist');
 
-export const OUTPUT_DIR = join(__dirname, './test_dist');
-
-
-const
-    HtmlWebpackPluginOptions = {
-        filename: join(OUTPUT_DIR, './index.html'),
-        hash: false,
-        inject: 'body',
-        minify: {
-            collapseWhitespace: true,
-            removeComments: true,
-            removeRedundantAttributes: true,
-            useShortDoctype: true
-        },
-        showErrors: false,
-        template: join(__dirname, './test_data/index.html'),
+const HtmlWebpackPluginOptions = {
+    filename: 'index.html',
+    hash: false,
+    inject: 'body',
+    minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true
     },
+    showErrors: false,
+    template: join(__dirname, './test_data/index.html'),
+};
 
-    webpackDevOptions: webpack.Configuration = {
-        mode: 'development',
-        entry: {
-            app: join(__dirname, './test_data/entry.js'),
-            styles: join(__dirname, './test_data/entry.css'),
-        },
-        output: {
-            path: OUTPUT_DIR
-        },
-        module: {
-            rules: [
-                {
-                    test: /\.css$/,
-                    use: [
-                        {
-                            loader: MiniCssExtractPlugin.loader
-                        },
-                        {
-                            loader: 'css-loader'
-                        },
-                    ]
-                }
-            ]
-        },
+const webpackDevOptions: webpack.Configuration = {
+    mode: 'development',
+    entry: {
+        app: join(__dirname, './test_data/entry.js'),
+        styles: join(__dirname, './test_data/entry.css'),
     },
+    output: {
+        path: OUTPUT_DIR
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                ]
+            }
+        ]
+    },
+};
 
-    webpackProdOptions: webpack.Configuration = {...webpackDevOptions,
-        mode: 'production',
-    };
+const webpackProdOptions: webpack.Configuration = {
+    ...webpackDevOptions,
+    mode: 'production',
+};
+
+function testAutoAssign(err) {
+    expect(!!err).to.be.false;
+    const htmlFile = join(OUTPUT_DIR, './index.html');
+    const htmlContents = readFileSync(htmlFile).toString('utf8');
+    expect(!!htmlContents).to.be.true;
+    expect(/href="styles\.css"[^>]*?type="text\/css"/i.test(htmlContents)).to.be.true;
+    expect(/src="app\.js"/i.test(htmlContents)).to.be.true;
+}
+
+
+function testTypeOverride(err) {
+    expect(!!err).to.be.false;
+    const htmlFile = join(OUTPUT_DIR, './index.html');
+    const htmlContents = readFileSync(htmlFile).toString();
+    expect(!!htmlContents).to.be.true;
+    expect(/href="styles\.css"[^>]*?type="testtype"/i.test(htmlContents)).to.be.true;
+    expect(/src="app\.js"/i.test(htmlContents)).to.be.true;
+}
 
 
 describe('HtmlWebpackLinkTypePlugin Development Mode', () => {
 
-    beforeEach((done) => {
+    afterEach((done) => {
         rimraf(OUTPUT_DIR, done);
     });
 
@@ -78,7 +96,8 @@ describe('HtmlWebpackLinkTypePlugin Development Mode', () => {
     });
 
     it('should allow type overrides', function (done) {
-        webpack({ ...webpackDevOptions,
+        webpack({
+            ...webpackDevOptions,
             plugins: [
                 new HtmlWebpackPlugin(HtmlWebpackPluginOptions),
                 new HtmlWebpackLinkTypePlugin({
@@ -98,7 +117,7 @@ describe('HtmlWebpackLinkTypePlugin Development Mode', () => {
 
 describe('HtmlWebpackLinkTypePlugin Production Mode', () => {
 
-    beforeEach((done) => {
+    afterEach((done) => {
         rimraf(OUTPUT_DIR, done);
     });
 
@@ -112,7 +131,7 @@ describe('HtmlWebpackLinkTypePlugin Production Mode', () => {
                 }),
             ]
         }, (err) => {
-            testAutoAssign( err );
+            testAutoAssign(err);
             done();
         });
     });
