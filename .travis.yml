@@ -24,7 +24,7 @@ deploy:
     node: "8"
     tags: true
     branch: master
-    condition: env(WEBPACK_VERSION)=4 AND env(HTML_PLUGIN_VERSION)=3
+    if: env(WEBPACK_VERSION)=4 AND env(HTML_PLUGIN_VERSION)=3
   provider: npm
   email: "opensource@steadyapp.com"
   api_key: 
