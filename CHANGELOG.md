@@ -1,3 +1,8 @@
+# 1.0.3 Handle production-mode defaults of webpack
+- Added documentation around a potential pitfall when using production-mode webpack. 
+- Upgraded test dependencies
+- Fixed peerDependency version syntax
+
 # 1.0.2 Don't remove non-links
 Fixed an issue where non-links were being removed, rather than left alone.
 

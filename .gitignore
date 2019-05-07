@@ -1,4 +1,3 @@
 node_modules/
 dist/
-
-spec/test_dist
+spec/test_dist/
