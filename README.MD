@@ -1,4 +1,6 @@
 # Html Webpack Link Type Plugin
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsteadyapp%2Fhtml-webpack-link-type-plugin.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsteadyapp%2Fhtml-webpack-link-type-plugin?ref=badge_shield)
+
 _Assigns a mimetype to link tags injected by [Html Webpack Plugin](https://github.com/jantimon/html-webpack-plugin)_
 
 ## Configuration
@@ -58,3 +60,7 @@ plugins: [
 
 ## Testing
 Testing is done via ts-node and mocha. Test files can be found in `/spec`, and will be auto-discovered as long as the file ends in `.spec.ts`. Just run `npm test` after installing to see the tests run.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsteadyapp%2Fhtml-webpack-link-type-plugin.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsteadyapp%2Fhtml-webpack-link-type-plugin?ref=badge_large)
