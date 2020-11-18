@@ -3,7 +3,7 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export class HtmlWebpackLinkTypePlugin {
 
-    mimeTypeMap = {
+    mimeTypeMap: {[key: string]: string} = {
         '*.css': 'text/css',
         '*.js': 'text/javascript',
         '*.png': 'image/png',

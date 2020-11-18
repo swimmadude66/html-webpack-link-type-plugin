@@ -9,7 +9,7 @@ import {HtmlWebpackLinkTypePlugin} from '../src/plugin';
 
 const OUTPUT_DIR = join(__dirname, './test_dist');
 
-const HtmlWebpackPluginOptions = {
+const HtmlWebpackPluginOptions: HtmlWebpackPlugin.Options = {
     filename: 'index.html',
     hash: false,
     inject: 'body',
