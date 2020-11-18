@@ -1,5 +1,6 @@
 # 1.0.4 Include .d.ts declaration files in package
 - Addresses #15
+- Remove testcases with Webpack 3 (compatability issues with mini-css-extract-plugin)
 
 # 1.0.3 Handle production-mode defaults of webpack
 - Added documentation around a potential pitfall when using production-mode webpack.
