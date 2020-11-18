@@ -1,5 +1,8 @@
+# 1.0.4 Include .d.ts declaration files in package
+- Addresses #15
+
 # 1.0.3 Handle production-mode defaults of webpack
-- Added documentation around a potential pitfall when using production-mode webpack. 
+- Added documentation around a potential pitfall when using production-mode webpack.
 - Upgraded test dependencies
 - Fixed peerDependency version syntax
 
