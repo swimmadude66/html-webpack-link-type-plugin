@@ -1,33 +1,33 @@
+os: linux
+dist: 'xenial'
 language: node_js
 node_js:
   - "8"
-  - "9"
-  - "10"
-  - "11"
   - "12"
 
 env:
+  - WEBPACK_VERSION=3 HTML_PLUGIN_VERSION=3
   - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=3
-  - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=next
+  - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=4
 
-install: 
+install:
   - npm install
   - npm install -D webpack@$WEBPACK_VERSION || true
   - npm install -D html-webpack-plugin@$HTML_PLUGIN_VERSION || true
 
-script: 
+script:
   - npm test
   - npm run build
 
 deploy:
-  skip_cleanup: true
+  cleanup: false
   on:
     repo: swimmadude66/html-webpack-link-type-plugin
-    node: "8"
+    node_js: "8"
     tags: true
     branch: master
-    if: env(WEBPACK_VERSION)=4 AND env(HTML_PLUGIN_VERSION)=3
+    condition: env(WEBPACK_VERSION)=4 AND env(HTML_PLUGIN_VERSION)=3
   provider: npm
   email: "swimmadude66@gmail.com"
-  api_key: 
+  api_token:
     secure: "TiQ8LgGsyPcg7IUb2BL4WIAFoL8RNZc6FA8Wj9NgZYMMQsvKHXwH9i1Rd0uGlw/ESB601AI+l3ufq7KOCm0lzKwCljuh4UT9+1N0fTLdlV1m4RXzrbjNZYZO+cAkmQB9BTMcTJcxruOUiwSfRDuYxflpVAAbW+kNpvGVblwgBfbtfmVudKO0/zWvFX1XClNkpyMroMI13bCDjeqK64sLKnlDZHNyp1AgKMtBl0ugc2c2zUK7bRhRT5XgUvfNDaZayMPIJyhv5AZRlFt7o1Vs4fbWY/ni4M1OkgalGt3fImXk+ub17jDMfF8ffoZMoKv6KPMvW+ZFGq+pZErgc27elRf2jSGlSgLpayFn0U0bpG+clfgUphFm+f8P1BhMrMkxkYzmKElTn0uyKScEvHYXzOxVEKWqQVnCarOwaf8fIPeWltQpB/0N2hlk5qoPLwlO64RKItNf8aytsMSbcZ677myx6HHpK6d+Ie8pz6pDH7FdhUufzmwVqPZEYlI2dSK52uOTRNi1C5mBVk1ZsKSSqh3Tgq+FMWpSloFWLpRZnBecD3TWktZvZtcsxfXgF5quuNo3GhPgmB1hl2M4GQ/eHEN1iBxFohp4ZhhsBvR2wdJn0O9SlnikJ5WctXiT4MvtP1PusZMDpnUjkVZRjbiOgVsG7/4kbXp2mmbPTuVGUos="

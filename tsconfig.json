@@ -19,5 +19,6 @@
         "spec/",
         "**/*.spec.js",
         "**/*.spec.ts",
+        "dist/"
     ]
   }
