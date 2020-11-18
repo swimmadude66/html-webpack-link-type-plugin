@@ -6,7 +6,8 @@ node_js:
   - "12"
 
 env:
-  - WEBPACK_VERSION=3 HTML_PLUGIN_VERSION=3
+  # - WEBPACK_VERSION=3 HTML_PLUGIN_VERSION=3
+  # Webpack 3 and mini-css-extract in tests cause issues
   - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=3
   - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=4
 
