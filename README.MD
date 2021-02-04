@@ -1,6 +1,11 @@
 # Html Webpack Link Type Plugin
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsteadyapp%2Fhtml-webpack-link-type-plugin.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsteadyapp%2Fhtml-webpack-link-type-plugin?ref=badge_shield)
 
+![build-plugin](https://github.com/swimmadude66/html-webpack-link-type-plugin/workflows/build-plugin/badge.svg?branch=master)
+
+[![NPM](https://nodei.co/npm/html-webpack-link-type-plugin.png?compact=true)](https://npmjs.org/package/html-webpack-link-type-plugin)
+
+
 _Assigns a mimetype to link tags injected by [Html Webpack Plugin](https://github.com/jantimon/html-webpack-plugin)_
 
 ## Configuration
