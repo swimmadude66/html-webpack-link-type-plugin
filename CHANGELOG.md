@@ -1,3 +1,6 @@
+# 1.1.0 Verify support for webpack v5 and html-webpack-plugin v5
+- No changes needed, package.json updated to reflect current dependency versions
+
 # 1.0.4 Include .d.ts declaration files in package
 - Addresses #15
 - Remove testcases with Webpack 3 (compatability issues with mini-css-extract-plugin)

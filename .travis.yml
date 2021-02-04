@@ -10,6 +10,8 @@ env:
   # Webpack 3 and mini-css-extract in tests cause issues
   - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=3
   - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=4
+  - WEBPACK_VERSION=4 HTML_PLUGIN_VERSION=5
+  - WEBPACK_VERSION=5 HTML_PLUGIN_VERSION=5
 
 install:
   - npm install
