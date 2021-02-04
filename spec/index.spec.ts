@@ -73,6 +73,8 @@ function testTypeOverride(err) {
     expect(/src="app\.js"/i.test(htmlContents)).to.be.true;
 }
 
+console.log('\nWEBPACK VERSION', webpack.version,'\n');
+console.log('\nHTML-WEBPACK_PLUGIN VERSION', HtmlWebpackPlugin.version,'\n');
 
 describe('HtmlWebpackLinkTypePlugin Development Mode', () => {
 
