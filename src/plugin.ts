@@ -22,7 +22,7 @@ export class HtmlWebpackLinkTypePlugin {
 
     apply(compiler) {
         if (compiler.hooks) {
-            // webpack 4 support
+            // webpack 4+ support
             compiler.hooks.compilation.tap('LinkTypePlugin', (compilation) => {
                 if (compilation.hooks.htmlWebpackPluginAlterAssetTags) {
                     // html webpack 3
@@ -51,8 +51,9 @@ export class HtmlWebpackLinkTypePlugin {
                 }
             });
         } else {
+            // webpack 3
             // Hook into the html-webpack-plugin processing
-            compiler.plugin('compilation', function (compilation) {
+            compiler.plugin('compilation', (compilation) => {
                 compilation.plugin('html-webpack-plugin-alter-asset-tags', (htmlPluginData, callback) => {
                     htmlPluginData.head = this._transformAssets(htmlPluginData.head);
                     htmlPluginData.body = this._transformAssets(htmlPluginData.body);
