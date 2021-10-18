@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-link-type-plugin",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "a plugin for html-webpack-plugin to allow for mimetype tagging of injected links",
   "main": "dist/plugin.js",
   "scripts": {
@@ -23,10 +23,12 @@
     "@types/node": "12.19.15",
     "chai": "4.2.0",
     "css-loader": "5.0.1",
+    "extract-text-webpack-plugin": "3.0.2",
     "html-webpack-plugin": ">=3.2.0",
     "mini-css-extract-plugin": "1.3.5",
     "mocha": "8.2.1",
     "rimraf": "3.0.2",
+    "style-loader": "3.3.0",
     "ts-node": "9.1.1",
     "typescript": "4.1.3",
     "webpack": ">=3.0.0"

@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         webpack: [4]
-        html-webpack: [4, 3]
+        html-webpack: [3, 4]
         include:
           - webpack: 5
             html-webpack: 5
