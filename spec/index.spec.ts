@@ -8,8 +8,8 @@ import {HtmlWebpackLinkTypePlugin} from '../src/plugin';
 
 const OUTPUT_DIR = join(__dirname, './test_dist');
 
-const webpackPackageVersion = process.env.npm_package_devDependencies_webpack.replace(/[^0-9.]/g, '')
-const htmlPluginPackageVersion = process.env.npm_package_devDependencies_html_webpack_plugin.replace(/[^0-9.]/g, '')
+const webpackPackageVersion = process.env.npm_package_devDependencies_webpack?.replace(/[^0-9.]/g, '')
+const htmlPluginPackageVersion = process.env.npm_package_devDependencies_html_webpack_plugin?.replace(/[^0-9.]/g, '')
 
 const webpackVersion = webpack.version ?? webpackPackageVersion
 const htmlPluginVersion = HtmlWebpackPlugin.version ?? htmlPluginPackageVersion

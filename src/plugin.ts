@@ -1,4 +1,4 @@
-import * as minimatch from 'minimatch';
+import {minimatch} from 'minimatch';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export class HtmlWebpackLinkTypePlugin {
