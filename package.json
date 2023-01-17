@@ -34,7 +34,7 @@
     "webpack": ">=3.0.0"
   },
   "dependencies": {
-    "minimatch": "6.0.4"
+    "minimatch": "^5.1.4"
   },
   "peerDependencies": {
     "html-webpack-plugin": ">=3.0.0",
